@@ -282,6 +282,7 @@ public class ConnectFourGame {
 		return i;
 	}
 	
+	/***goal is the desired number of chips in a row, for "selPlayer"*/
 	public int verticalAI(int goal, int selPlayer) {
 		int count = 0;
 		
@@ -310,6 +311,7 @@ public class ConnectFourGame {
 		return -1;
 	}
 	
+	/***goal is the desired number of chips in a row, for "selPlayer"*/
 	public int horizontalAI(int goal, int selPlayer) {
 		int count = 0;
 		
@@ -339,6 +341,8 @@ public class ConnectFourGame {
 		return -1;
 	}
 	
+	
+	/***goal is the desired number of chips in a row, for "selPlayer"*/
 	public int diagAI(int goal, int selPlayer) {
 		int count = 0;
 		int tempHeight, tempWidth;
