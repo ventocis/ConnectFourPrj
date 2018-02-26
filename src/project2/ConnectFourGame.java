@@ -226,57 +226,63 @@ public class ConnectFourGame {
 		int column = -1;
 		
 		/**AI play to win*/
-		column = verticalAI(1);
+		column = verticalAI(1, COMPUTER);
 		if(column != -1) {
 			return column;
 		}
 		
-		column = horizontalAI(1);
+		column = horizontalAI(1, COMPUTER);
 		if(column != -1) {
 			return column;
 		}
 		
-		column = diagAI(1);
+		column = diagAI(1, COMPUTER);
 		if(column != -1) {
 			return column;
 		}
 		
 		/**AI play to stop opponent win*/
-		column = verticalAI(3);
+		column = verticalAI(3, PLAYER1);
 		if(column != -1) {
 			return column;
 		}
 		
-		column = horizontalAI(3);
+		column = horizontalAI(3, PLAYER1);
 		if(column != -1) {
 			return column;
 		}
 		
-		column = diagAI(3);
+		column = diagAI(3, PLAYER1);
 		if(column != -1) {
 			return column;
 		}
 		
-		/**AI tries to win*/
+		/**AI tries to set itself up to win*/
 		for(int goal = 2; goal > 0; goal--) {
-			column = verticalAI(goal);
+			column = verticalAI(goal, COMPUTER);
 			if(column != -1) {
 				return column;
 			}
 			
-			column = horizontalAI(goal);
+			column = horizontalAI(goal, COMPUTER);
 			if(column != -1) {
 				return column;
 			}
 			
-			column = diagAI(goal);
+			column = diagAI(goal, COMPUTER);
 			if(column != -1) {
 				return column;
 			}
 		}
-		return rand.nextInt(this.size);
+		
+		int i = rand.nextInt(this.size);
+		while(board[i][this.size-1] != -1) {
+			i = rand.nextInt(this.size);
+		}
+		return i;
 	}
 	
+	/***goal is the desired number of chips in a row, for "selPlayer"*/
 	public int verticalAI(int goal, int selPlayer) {
 		int count = 0;
 		
@@ -305,6 +311,7 @@ public class ConnectFourGame {
 		return -1;
 	}
 	
+	/***goal is the desired number of chips in a row, for "selPlayer"*/
 	public int horizontalAI(int goal, int selPlayer) {
 		int count = 0;
 		
@@ -334,6 +341,8 @@ public class ConnectFourGame {
 		return -1;
 	}
 	
+	
+	/***goal is the desired number of chips in a row, for "selPlayer"*/
 	public int diagAI(int goal, int selPlayer) {
 		int count = 0;
 		int tempHeight, tempWidth;
@@ -403,6 +412,3 @@ public class ConnectFourGame {
 		return -1;
 	}
 }
-
-
-check
