@@ -225,8 +225,40 @@ public class ConnectFourGame {
 	public int AIPlay() {
 		int column = -1;
 		
+		/**AI play to win*/
+		column = verticalAI(1);
+		if(column != -1) {
+			return column;
+		}
+		
+		column = horizontalAI(1);
+		if(column != -1) {
+			return column;
+		}
+		
+		column = diagAI(1);
+		if(column != -1) {
+			return column;
+		}
+		
+		/**AI play to stop opponent win*/
+		column = verticalAI(3);
+		if(column != -1) {
+			return column;
+		}
+		
+		column = horizontalAI(3);
+		if(column != -1) {
+			return column;
+		}
+		
+		column = diagAI(3);
+		if(column != -1) {
+			return column;
+		}
+		
 		/**AI tries to win*/
-		for(int goal = 3; goal > 0; goal--) {
+		for(int goal = 2; goal > 0; goal--) {
 			column = verticalAI(goal);
 			if(column != -1) {
 				return column;
@@ -245,7 +277,7 @@ public class ConnectFourGame {
 		return rand.nextInt(this.size);
 	}
 	
-	public int verticalAI(int goal) {
+	public int verticalAI(int goal, int selPlayer) {
 		int count = 0;
 		
 		/**increments through all of the columns*/
@@ -254,7 +286,7 @@ public class ConnectFourGame {
 			
 			/**checks for four in a row in selected column*/
 			for(int h = 0; h < this.size; h++) {
-				if(board[w][h] == player) {
+				if(board[w][h] == selPlayer) {
 					count++;
 				}
 				
@@ -264,7 +296,7 @@ public class ConnectFourGame {
 				}
 				
 				/**returns column if there are "goal" chips in a row*/
-				if(count >= goal) {
+				if(count >= goal && board[w][this.size] == -1) {
 					return w;
 				}
 			}
@@ -273,7 +305,7 @@ public class ConnectFourGame {
 		return -1;
 	}
 	
-	public int horizontalAI(int goal) {
+	public int horizontalAI(int goal, int selPlayer) {
 		int count = 0;
 		
 		/**increments through all of the columns*/
@@ -282,7 +314,7 @@ public class ConnectFourGame {
 			
 			/**checks for four in a row in selected column*/
 			for(int w = 0; w < this.size; w++) {
-				if(board[w][h] == player) {
+				if(board[w][h] == selPlayer) {
 					count++;
 				}
 				
@@ -293,7 +325,7 @@ public class ConnectFourGame {
 				
 				//FIXME Can be improved to check for piece below it
 				/**returns column if "goal" chips are in a row*/
-				if(count >= goal && board[w+1][h] == -1) {
+				if(count >= goal && board[w+1][h] == -1 && w+1 < this.size) {
 					return w+1;
 				}
 			}
@@ -302,7 +334,7 @@ public class ConnectFourGame {
 		return -1;
 	}
 	
-	public int diagAI(int goal) {
+	public int diagAI(int goal, int selPlayer) {
 		int count = 0;
 		int tempHeight, tempWidth;
 		int h = 0;
@@ -321,7 +353,7 @@ public class ConnectFourGame {
 					break;
 				}
 				
-				if(board[tempWidth][tempHeight] == player) {
+				if(board[tempWidth][tempHeight] == selPlayer) {
 					count++;
 				}
 				
@@ -331,7 +363,7 @@ public class ConnectFourGame {
 				}
 				
 				/**returns true if "goal" or more chips are in a row*/
-				if(count >= goal && (w+1) < this.size) {
+				if(count >= goal && board[w+1][this.size-1] == -1) {
 					return w+1;
 				}
 			}
@@ -352,7 +384,7 @@ public class ConnectFourGame {
 					break;
 				}
 				
-				if(board[tempWidth][tempHeight] == player) {
+				if(board[tempWidth][tempHeight] == selPlayer) {
 					count++;
 				}
 				
@@ -362,7 +394,7 @@ public class ConnectFourGame {
 				}
 				
 				/**returns true if "goal" or more chips are in a row*/
-				if(count >= goal && (w+1) < this.size) {
+				if(count >= goal && board[w+1][this.size-1] == -1) {
 					return w+1;
 				}
 			}
@@ -371,3 +403,6 @@ public class ConnectFourGame {
 		return -1;
 	}
 }
+
+
+check
