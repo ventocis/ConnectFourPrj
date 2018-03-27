@@ -98,7 +98,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 					int h = game.selectCol(w);
 					if(h == -1) {
 						JOptionPane.showMessageDialog(null, "Column is filled");
-						game.switchplayer();
+						game.switchPlayer();
 					}
 					else if(game.getPlayer() == 0){
 						board[w][h].setIcon(iconPlayer1);
@@ -117,7 +117,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 						}
 					}
 
-					game.switchplayer();
+					game.switchPlayer();
 				}
 			}
 		}
@@ -129,7 +129,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 					int h = game.selectCol(w);
 					if(h == -1) {
 						JOptionPane.showMessageDialog(null, "Column is filled");
-						game.switchplayer();
+						game.switchPlayer();
 					}
 					else if(game.getPlayer() == 0){
 						board[w][h].setIcon(iconPlayer1);
@@ -144,7 +144,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 							}
 						}
 						
-						game.switchplayer();
+						game.switchPlayer();
 					}
 
 				}
@@ -165,7 +165,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 					}
 				}
 				
-				game.switchplayer();
+				game.switchPlayer();
 			}
 		}
 
