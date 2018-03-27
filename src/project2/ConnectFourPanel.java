@@ -116,7 +116,8 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 							}
 						}
 					}
-
+					if(game.catsGame())
+						JOptionPane.showMessageDialog(null, "Cat's Game");
 					game.switchPlayer();
 				}
 			}
@@ -143,7 +144,8 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 								}
 							}
 						}
-						
+						if(game.catsGame())
+							JOptionPane.showMessageDialog(null, "Cat's Game");
 						game.switchPlayer();
 					}
 
@@ -164,7 +166,8 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 						}
 					}
 				}
-				
+				if(game.catsGame())
+					JOptionPane.showMessageDialog(null, "Cat's Game");
 				game.switchPlayer();
 			}
 		}

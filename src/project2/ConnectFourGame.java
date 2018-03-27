@@ -585,4 +585,13 @@ public class ConnectFourGame {
 		}
 		return -1;
 	}
+	
+	public boolean catsGame() {
+		for(int c = 0; c < size; c++) {
+			if(board[size-1][c] == -1)
+				return false;
+		}
+		
+		return true;
+	}
 }
