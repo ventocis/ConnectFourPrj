@@ -588,7 +588,7 @@ public class ConnectFourGame {
 	
 	public boolean catsGame() {
 		for(int c = 0; c < size; c++) {
-			if(board[size-1][c] == -1)
+			if(board[c][size-1] == -1)
 				return false;
 		}
 		
