@@ -32,7 +32,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 		quitItem =pQuItem;
 		gameItem = pGItem;
 
-		AI = 0;
+		AI = 1;
 
 
 
@@ -74,7 +74,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 			}
 		}
 
-		setPreferredSize(new Dimension(1800,1600));
+		setPreferredSize(new Dimension(1800,800));
 
 		setBackground(Color.white);
 
@@ -94,6 +94,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 		if(AI == 0) {
 			for(int w = 0; w < bSize; w++) {
 				if(selectionButt[w] == src) {
+					System.out.println("button pushed");
 
 					int h = game.selectCol(w);
 					if(h == -1) {
@@ -126,6 +127,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 		else if (AI != 0) {
 			for(int w = 0; w < bSize; w++) {
 				if(selectionButt[w] == src) {
+					System.out.println("button pushed");
 
 					int h = game.selectCol(w);
 					if(h == -1) {
