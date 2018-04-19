@@ -399,41 +399,47 @@ public class ConnectFourGame {
 			return column;
 		}
 
-		/**AI tries to set itself up to win*/
-		for(int goal = 2; goal > 0; goal--) {
-			column = horizontalAI(goal, COMPUTER);
-			if(column != -1) 
-				return column;
+		//		/**AI tries to set itself up to win*/
+		//		for(int goal = 2; goal > 0; goal--) {
+		//			column = horizontalAI(goal, COMPUTER);
+		//			if(column != -1) 
+		//				return column;
+		//
+		//			column = diagAI(goal, COMPUTER);
+		//			if(column != -1) 
+		//				return column;
+		//			
+		//			column = verticalAI(goal, COMPUTER);
+		//			if(column != -1) 
+		//				return column;
+		//		}
 
-			column = diagAI(goal, COMPUTER);
-			if(column != -1) 
-				return column;
-			
-			column = verticalAI(goal, COMPUTER);
-			if(column != -1) 
-				return column;
-		}
 
 		int c = -1;
 		int row = -1;
 
 		while(!isValidSpot(c, size-1) && !resultsInLoss(c, row)) {
-			c = (int) rand.nextGaussian() + 5;
-			for(int check = 0; check < size; check++)
-				if(board[c][check] == -1) {
-					row = check;
-					break;
+			c = (int) rand.nextGaussian() + size/2;
+			System.out.println("C: " + c);
+			if(c < size) {
+				if(board[c][size-1] == -1) {
+					for(int check = 0; check < size; check++)
+						if(board[c][check] == -1) {
+							row = check;
+							break;
+						}
+					if(!resultsInLoss(c, row)) {
+						System.out.println("Gaussian choice " + c);
+						return c;
+					}
 				}
-			if(!resultsInLoss(c, row)) {
-				System.out.println("Gaussian choice");
-				return c;
 			}
 			c = -1;
 		}
 
 		for(int col = 0; col < size; col++) {
 			if(isValidSpot(col, size-1)) {
-				System.out.println("Default");
+				System.out.println("Default " + c);
 				return col;
 			}
 		}
@@ -676,27 +682,27 @@ public class ConnectFourGame {
 										else if(!resultsInLoss(c, r))
 											return c;
 									}
-				
+
 			}
 		}
 		return -1;
 	}
-	
-//	count = 0;
-//	missed = -1;
-//	validSpots = 0;
-//	for(int inc = 0; inc < 5; inc++) {
-//		if(c + inc < size) {
-//			if(board[c + inc][r] == selPlayer)
-//				count++;
-//			else if(isValidSpot(c + inc, r)){
-//				missed = c + inc;
-//				validSpots++;
-//			}
-//		}
-//	}
-//	if(missed > -1 && count >= 2 && validSpots >2) 
-//		return missed;
+
+	//	count = 0;
+	//	missed = -1;
+	//	validSpots = 0;
+	//	for(int inc = 0; inc < 5; inc++) {
+	//		if(c + inc < size) {
+	//			if(board[c + inc][r] == selPlayer)
+	//				count++;
+	//			else if(isValidSpot(c + inc, r)){
+	//				missed = c + inc;
+	//				validSpots++;
+	//			}
+	//		}
+	//	}
+	//	if(missed > -1 && count >= 2 && validSpots >2) 
+	//		return missed;
 
 
 	public int twoSpacedDiag(int selPlayer) {
