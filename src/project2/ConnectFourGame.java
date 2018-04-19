@@ -419,7 +419,7 @@ public class ConnectFourGame {
 		int row = -1;
 
 		while(!isValidSpot(c, size-1) && !resultsInLoss(c, row)) {
-			c = (int) ((rand.nextGaussian() + size/2) + (rand.nextGaussian() + size/2));
+			c = (int) ((rand.nextGaussian() * 1.5 + size/2));
 			System.out.println("C: " + c);
 			if(c < size && c >= 0) {
 				if(board[c][size-1] == -1) {
@@ -428,7 +428,7 @@ public class ConnectFourGame {
 							row = check;
 							break;
 						}
-					if(!resultsInLoss(c, row)) {
+					if(!resultsInLoss(c, row + 1)) {
 						System.out.println("Gaussian choice " + c);
 						return c;
 					}
