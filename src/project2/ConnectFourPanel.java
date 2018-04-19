@@ -137,7 +137,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 						board[w][h].setIcon(iconPlayer1);
 						
 						if(game.isWinner()) {
-							JOptionPane.showMessageDialog(null, "Player " + game.getPlayer() + " Wins!");
+							JOptionPane.showMessageDialog(null, "Player " + (game.getPlayer() + 1) + " Wins!");
 							game.reset();
 							for(int wi = 0; wi < bSize; wi++) {
 								for(int hi = 0; hi < bSize; hi++) {
@@ -159,7 +159,7 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 				board[w][h].setIcon(iconPlayer2);
 				
 				if(game.isWinner()) {
-					JOptionPane.showMessageDialog(null, "Player " + game.getPlayer() + " Wins!");
+					JOptionPane.showMessageDialog(null, "Player " + (game.getPlayer() + 1) + " Wins!");
 					game.reset();
 					for(int wi = 0; wi < bSize; wi++) {
 						for(int hi = 0; hi < bSize; hi++) {
