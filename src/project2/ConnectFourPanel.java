@@ -132,7 +132,6 @@ public class ConnectFourPanel extends JPanel implements ActionListener{
 					int h = game.selectCol(w);
 					if(h == -1) {
 						JOptionPane.showMessageDialog(null, "Column is filled");
-						game.switchPlayer();
 					}
 					else if(game.getPlayer() == 0){
 						board[w][h].setIcon(iconPlayer1);
