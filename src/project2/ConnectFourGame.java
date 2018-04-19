@@ -419,9 +419,9 @@ public class ConnectFourGame {
 		int row = -1;
 
 		while(!isValidSpot(c, size-1) && !resultsInLoss(c, row)) {
-			c = (int) rand.nextGaussian() + size/2;
+			c = (int) ((rand.nextGaussian() + size/2) + (rand.nextGaussian() + size/2));
 			System.out.println("C: " + c);
-			if(c < size) {
+			if(c < size && c >= 0) {
 				if(board[c][size-1] == -1) {
 					for(int check = 0; check < size; check++)
 						if(board[c][check] == -1) {
